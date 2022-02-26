@@ -13,7 +13,7 @@ public class ScoreManager : MonoBehaviour
     public int deathPerPoint;
     int currentTotalScore;
 
-
+    public int minimumMoneyLimit;
 
     //Reactions With Scores
     GameObject reactions;
@@ -40,14 +40,18 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
+        minimumMoneyLimit = Random.Range(100, 200);
         currentTotalScore = PlayerPrefs.GetInt("Score");
         reactions = new GameObject();      
         reactions.AddComponent<Image>();
-        score.text = currentTotalScore.ToString();
+        score.text = ingameCurrentScore.ToString();
     
     }
 
-
+    public void Test()
+    {
+        Debug.Log("Hello MF");
+    }
     public void MoneyScore(int toIncrease)
     {
         if (isGameOver)
@@ -59,8 +63,13 @@ public class ScoreManager : MonoBehaviour
         r.GetComponent<Image>().sprite = reactionImages[Random.Range(0, reactionImages.Length)];
         LeanTween.moveLocal(r, (Vector3.up+Vector3.right) * Random.Range(90,150), 2);
         currentTotalScore += toIncrease;
-        score.text = currentTotalScore.ToString();
+        ingameCurrentScore += toIncrease;
+        score.text = ingameCurrentScore.ToString();
         PlayerPrefs.SetInt("Score",currentTotalScore);
         Destroy(r, 2);
+        if (ingameCurrentScore>=minimumMoneyLimit)
+        {
+            GameManager.Instance.GameWon();
+        }
     }
 }

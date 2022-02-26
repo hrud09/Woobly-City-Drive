@@ -68,11 +68,12 @@ public class MaterialChanging : MonoBehaviour
     [SerializeField] private Text fpsText;
     private void LateUpdate()
     {
-        if (Time.unscaledTime > timer)
+       /* if (Time.unscaledTime > timer)
         {
             int fps = (int)(1f / Time.unscaledDeltaTime);
             fpsText.text ="FPS: " + fps.ToString("00");
             timer = Time.unscaledTime + 0.5f;
         }
+       */
     }
 }

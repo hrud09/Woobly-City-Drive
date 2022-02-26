@@ -29,6 +29,10 @@ public class Taxi : MonoBehaviour
     {
 
         //FindHuman(10,60);
+        if (GameManager.Instance.gameOver)
+        {
+            return;
+        }
         if (rb == null)
         {
             rb = GetComponent<Rigidbody>();
@@ -103,7 +107,10 @@ public class Taxi : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
+        if (GameManager.Instance.gameOver)
+        {
+            return;
+        }
         if (Direction.magnitude > 0f)
         {
             Accelerate();
