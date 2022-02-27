@@ -15,12 +15,12 @@ public class AdManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
         rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
-            rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
+//#elif UNITY_IPHONE
+   //         rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
              
-#endif
+//#endif
         request = new AdRequest.Builder().Build();
 
     }

@@ -2,8 +2,11 @@ fileFormatVersion: 2
 guid: e869b36b657604102a7166a39ee7d9c9
 labels:
 - gvh
-DefaultImporter:
-  externalObjects: {}
-  userData: 
-  assetBundleName: 
-  assetBundleVariant: 
+- gvh_version-6.1.2
+- gvhp_exportpath-Plugins/Android/GoogleMobileAdsPlugin.androidlib/AndroidManifest.xml
+timeCreated: 1427838353
+licenseType: Free
+TextScriptImporter:
+  userData:
+  assetBundleName:
+  assetBundleVariant:
