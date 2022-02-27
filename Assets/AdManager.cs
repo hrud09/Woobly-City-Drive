@@ -29,7 +29,6 @@ public class AdManager : MonoBehaviour
     public void LoadRewardedAd()
     {
 
-        GameManager.Instance.showingAds = true;
         this.rewardedAd = new RewardedAd(rewarderAdId);
         this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
@@ -53,12 +52,12 @@ public class AdManager : MonoBehaviour
     {
         GameManager.Instance.RegeneratePlayer(350);
 
-        GameManager.Instance.showingAds = false;
+      
     }
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
         print(args.ToString());
         GameManager.Instance.LoadMenu();
-        GameManager.Instance.showingAds = false;
+ 
     }
 }

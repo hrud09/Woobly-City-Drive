@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject buttons;
     public Text gameOverText;
 
-    public bool showingAds;
+   
     private void Awake()
     {
         Instance = this;
@@ -28,8 +28,7 @@ public class GameManager : MonoBehaviour
         timer = 5;
        
     }
-
-    float timeCount;
+    
     // Update is called once per frame
     void Update()
     {
@@ -39,14 +38,7 @@ public class GameManager : MonoBehaviour
             gameOverText.text = "Level Failed'";
             gameOverPannel.SetActive(true);
             buttons.SetActive(true);
-            if (timeCount<=0 && !showingAds)
-            {
-                LoadMenu();
-            }
-            else
-            {
-                timeCount -= Time.deltaTime;
-            }
+
         }
         else
         {
@@ -75,8 +67,10 @@ public class GameManager : MonoBehaviour
         gameOverText.text = "Level Passed";
         buttons.SetActive(false);
         gameOverPannel.SetActive(true);
-        LoadMenu();
+        
     }
+
+   
     public void LoadMenu()
     {
    
