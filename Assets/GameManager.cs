@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public float timer=5;
+    public float timer;
     public bool gameOver;
     public Text timerText;
 
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 5;
+        timer = 350;
        
     }
     
