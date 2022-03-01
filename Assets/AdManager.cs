@@ -15,12 +15,11 @@ public class AdManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
-#if UNITY_ANDROID
-        rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
+//#if UNITY_ANDROID
+  //      rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
+//#elif UNITY_IPHONE
            rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
-             
-#endif
+//#endif
         request = new AdRequest.Builder().Build();
 
     }
@@ -50,7 +49,7 @@ public class AdManager : MonoBehaviour
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        GameManager.Instance.RegeneratePlayer(350);
+        GameManager.Instance.RegeneratePlayer(120);
 
       
     }
