@@ -40,7 +40,8 @@ public class ScoreManager : MonoBehaviour
     }
     void Start()
     {
-        minimumMoneyLimit = Random.Range(100, 200);
+        //minimumMoneyLimit = Random.Range(100, 200);
+        minimumMoneyLimit = 10;
         currentTotalScore = PlayerPrefs.GetInt("Score");
         reactions = new GameObject();      
         reactions.AddComponent<Image>();

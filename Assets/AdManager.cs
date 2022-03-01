@@ -11,7 +11,9 @@ public class AdManager : MonoBehaviour
 
     private RewardedAd rewardedAd;
     public string rewarderAdId;
-
+    
+    private InterstitialAd interstitial;
+    public string interstitialAdId;
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
@@ -19,24 +21,56 @@ public class AdManager : MonoBehaviour
   //      rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
 //#elif UNITY_IPHONE
            rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
+           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
 //#endif
-        request = new AdRequest.Builder().Build();
-
+        LoadRewardedAd();
+        LoadInterstitialAd();
+        
     }
 
-    AdRequest request;
+    public void ShowRewardedAd()
+    {
+        if (this.rewardedAd.IsLoaded()) {
+            this.rewardedAd.Show();
+        }
+    }
+
+    public void ShowInterstitialAd()
+    {
+        if (this.interstitial.IsLoaded()) {
+            this.interstitial.Show();
+        }
+    }
+    public void LoadInterstitialAd()
+    {
+        
+        this.interstitial = new InterstitialAd(interstitialAdId);
+        this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
+        this.interstitial.OnAdClosed += HandleOnAdClosed;
+        AdRequest request = new AdRequest.Builder().Build();
+        this.interstitial.LoadAd(request);
+    }
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+        GameManager.Instance.LoadMenu();
+    }
+    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        GameManager.Instance.LoadMenu();
+    }
     public void LoadRewardedAd()
     {
-
-        this.rewardedAd = new RewardedAd(rewarderAdId);
-        this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
-        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
-        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+        rewardedAd = new RewardedAd(rewarderAdId);
+        AdRequest request = new AdRequest.Builder().Build();
+       
+        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
 
         // Create an empty ad request.
 
         // Load the rewarded ad with the request.
-        this.rewardedAd.LoadAd(request);
+        rewardedAd.LoadAd(request);
 
 
 
@@ -49,7 +83,7 @@ public class AdManager : MonoBehaviour
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
-        GameManager.Instance.RegeneratePlayer(120);
+        GameManager.Instance.RegeneratePlayer(30);
 
       
     }

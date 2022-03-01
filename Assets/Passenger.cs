@@ -9,7 +9,7 @@ public class Passenger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        money = Random.Range(4, 12);
+        money = 10;
     }
 
     public void GetInSideCar()
