@@ -19,7 +19,7 @@ public class ScoreManager : MonoBehaviour
     GameObject reactions;
     public Sprite[] reactionImages;
     public Transform reactionSpawnPos;
-
+    public Text ingameCurrentScoreText;
 
     //boolean to chack game finish
     public bool isGameOver;
@@ -41,6 +41,7 @@ public class ScoreManager : MonoBehaviour
     void Start()
     {
         //minimumMoneyLimit = Random.Range(100, 200);
+        ingameCurrentScore = 0;
         minimumMoneyLimit = 10;
         currentTotalScore = PlayerPrefs.GetInt("Score");
         reactions = new GameObject();      
@@ -66,6 +67,7 @@ public class ScoreManager : MonoBehaviour
         currentTotalScore += toIncrease;
         ingameCurrentScore += toIncrease;
         score.text = currentTotalScore.ToString();
+        ingameCurrentScoreText.text = ingameCurrentScore.ToString();
         PlayerPrefs.SetInt("Score",currentTotalScore);
         Destroy(r, 2);
         if (ingameCurrentScore>=minimumMoneyLimit)
