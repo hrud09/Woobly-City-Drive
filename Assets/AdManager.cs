@@ -89,8 +89,8 @@ public class AdManager : MonoBehaviour
     }
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
-        print(args.ToString());
-        GameManager.Instance.LoadMenu();
+      
+        GameManager.Instance.RegeneratePlayer(30);
  
     }
 }
