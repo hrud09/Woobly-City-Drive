@@ -45,7 +45,7 @@ public class ScoreManager : MonoBehaviour
         currentTotalScore = PlayerPrefs.GetInt("Score");
         reactions = new GameObject();      
         reactions.AddComponent<Image>();
-        score.text = ingameCurrentScore.ToString();
+        score.text = currentTotalScore.ToString();
     
     }
 
@@ -65,7 +65,7 @@ public class ScoreManager : MonoBehaviour
         LeanTween.moveLocal(r, (Vector3.up+Vector3.right) * Random.Range(90,150), 2);
         currentTotalScore += toIncrease;
         ingameCurrentScore += toIncrease;
-        score.text = ingameCurrentScore.ToString();
+        score.text = currentTotalScore.ToString();
         PlayerPrefs.SetInt("Score",currentTotalScore);
         Destroy(r, 2);
         if (ingameCurrentScore>=minimumMoneyLimit)
