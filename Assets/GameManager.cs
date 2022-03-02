@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
  
     public GameObject gameOverPannel;
-    public GameObject buttons;
+    public GameObject rewardedAdButton,nextButton;
     public Text gameOverText;
 
    
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 6;
+        timer = 60;
        
     }
     
@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
             gameOver = true;
             gameOverText.text = "Level Failed'";
             gameOverPannel.SetActive(true);
-            buttons.SetActive(true);
+            rewardedAdButton.SetActive(true);
+            nextButton.SetActive(false);
 
         }
         else
@@ -65,7 +66,8 @@ public class GameManager : MonoBehaviour
     {
         gameOver = true;
         gameOverText.text = "Level Passed";
-        buttons.SetActive(false);
+        nextButton.SetActive(true);
+        rewardedAdButton.SetActive(false);
         gameOverPannel.SetActive(true);
         
     }
@@ -75,5 +77,10 @@ public class GameManager : MonoBehaviour
     {
    
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadSameLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 }
