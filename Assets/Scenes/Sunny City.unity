@@ -547,7 +547,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: You Win
+  m_Text: '0 '
 --- !u!222 &95224980
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2160,6 +2160,7 @@ MonoBehaviour:
   rewardedAdButton: {fileID: 7055472051621202371}
   nextButton: {fileID: 1933451470}
   gameOverText: {fileID: 1364556956}
+  minimap: {fileID: 7055472051621202370}
 --- !u!4 &536077160
 Transform:
   m_ObjectHideFlags: 0
@@ -10358,6 +10359,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 560374566}
+    - target: {fileID: 1326107325, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
+      propertyPath: m_Text
+      value: New 30 Seconds
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326107325, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326107325, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 1359446305, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -10456,6 +10469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
+--- !u!1 &7055472051621202370 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 785988548, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
+  m_PrefabInstance: {fileID: 7055472051621202369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7055472051621202371 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1258380530, guid: 6ffa7ea76afd8894ebc49a50d6947031, type: 3}
@@ -11039,11 +11057,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745585628656, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.000016049573
+      value: 0.000018970602
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745585628656, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000007530622
+      value: 0.000008902859
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745585628656, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.y
@@ -11103,15 +11121,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745885942254, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.000000033618107
+      value: -0.000000033611514
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745885942254, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.00000002772913
+      value: -0.000000027750502
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745885942254, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000029682091
+      value: -0.000000029634178
       objectReference: {fileID: 0}
     - target: {fileID: 9220378745885942254, guid: 509af8ea8d8bb3d4d87b12ea7a823b4a, type: 3}
       propertyPath: m_LocalRotation.z

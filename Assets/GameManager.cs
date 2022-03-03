@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject rewardedAdButton,nextButton;
     public Text gameOverText;
 
+    public GameObject minimap;
    
     private void Awake()
     {
@@ -32,31 +33,34 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer<=0)
+        if (!gameOver)
         {
-            gameOver = true;
-            gameOverText.text = "Level Failed'";
-            gameOverPannel.SetActive(true);
-            rewardedAdButton.SetActive(true);
-            nextButton.SetActive(false);
+            if (timer<=0)
+            {
+                gameOver = true;
+minimap.SetActive(false);
+                gameOverText.text = "Level Failed'";
+                nextButton.SetActive(false);
+                gameOverPannel.SetActive(true);
+                rewardedAdButton.SetActive(true);
+           
 
+            }
+            else
+            {
+                timer -= Time.deltaTime;
+                timerText.text = Mathf.FloorToInt(timer / 60).ToString() + " : " + Mathf.FloorToInt(timer % 60).ToString();
+            }
         }
-        else
-        {
-            timer -= Time.deltaTime;
-            timerText.text = Mathf.FloorToInt(timer / 60).ToString() + " : " + Mathf.FloorToInt(timer % 60).ToString();
-        }
+      
     }
-
-    public void Test()
-    {
-        Debug.Log("Hello MF");
-    }
-  
+    
     public void RegeneratePlayer(float t)
     {
-        timer += t;
+        timer = t;
+        FindObjectOfType<ScoreManager>().minimumMoneyLimit += 10;
         gameOver = false;
+        minimap.SetActive(true);
         gameOverPannel.SetActive(false);
     }
 
@@ -65,6 +69,7 @@ public class GameManager : MonoBehaviour
     public void GameWon()
     {
         gameOver = true;
+        minimap.SetActive(false);
         gameOverText.text = "Level Passed";
         nextButton.SetActive(true);
         rewardedAdButton.SetActive(false);
