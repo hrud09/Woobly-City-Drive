@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public Text timerText;
 
 
- 
+
     public GameObject gameOverPannel;
     public GameObject rewardedAdButton,nextButton;
     public Text gameOverText;
@@ -33,12 +33,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (!gameOver)
         {
             if (timer<=0)
             {
                 gameOver = true;
-minimap.SetActive(false);
+                minimap.SetActive(false);
                 gameOverText.text = "Level Failed'";
                 nextButton.SetActive(false);
                 gameOverPannel.SetActive(true);
@@ -58,10 +59,11 @@ minimap.SetActive(false);
     public void RegeneratePlayer(float t)
     {
         timer = t;
-        FindObjectOfType<ScoreManager>().minimumMoneyLimit += 10;
+       // FindObjectOfType<ScoreManager>().minimumMoneyLimit += 10;
         gameOver = false;
         minimap.SetActive(true);
         gameOverPannel.SetActive(false);
+        ScoreManager.Instance.ingameCurrentScore = 0;
     }
 
    

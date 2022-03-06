@@ -45,19 +45,10 @@ public class AdManager : MonoBehaviour
     {
         
         this.interstitial = new InterstitialAd(interstitialAdId);
-        this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
-        this.interstitial.OnAdClosed += HandleOnAdClosed;
         AdRequest request = new AdRequest.Builder().Build();
         this.interstitial.LoadAd(request);
     }
-    public void HandleOnAdClosed(object sender, EventArgs args)
-    {
-        GameManager.Instance.LoadMenu();
-    }
-    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
-    {
-        GameManager.Instance.LoadMenu();
-    }
+ 
     public void LoadRewardedAd()
     {
         rewardedAd = new RewardedAd(rewarderAdId);
@@ -78,7 +69,7 @@ public class AdManager : MonoBehaviour
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
         print(args.ToString());
-       GameManager.Instance.gameOverPannel.SetActive(false);
+        GameManager.Instance.gameOverPannel.SetActive(false);
 
     }
     public void HandleUserEarnedReward(object sender, Reward args)
