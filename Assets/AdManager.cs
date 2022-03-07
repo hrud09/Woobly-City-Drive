@@ -23,13 +23,14 @@ public class AdManager : MonoBehaviour
            rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
            interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
 //#endif
-        LoadRewardedAd();
-        LoadInterstitialAd();
+      
+       
         
     }
 
     public void ShowRewardedAd()
     {
+        LoadRewardedAd();
         if (this.rewardedAd.IsLoaded()) {
             this.rewardedAd.Show();
         }
@@ -37,6 +38,7 @@ public class AdManager : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
+        LoadInterstitialAd();
         if (this.interstitial.IsLoaded()) {
             this.interstitial.Show();
         }
@@ -45,10 +47,20 @@ public class AdManager : MonoBehaviour
     {
         
         this.interstitial = new InterstitialAd(interstitialAdId);
+        this.interstitial.OnAdClosed += HandleOnAdClosed;
+        this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
         AdRequest request = new AdRequest.Builder().Build();
         this.interstitial.LoadAd(request);
     }
- 
+    public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
+    {
+        GameManager.Instance.LoadMenu();
+    }
+    public void HandleOnAdClosed(object sender, EventArgs args)
+    {
+        GameManager.Instance.LoadMenu();
+    }
+
     public void LoadRewardedAd()
     {
         rewardedAd = new RewardedAd(rewarderAdId);

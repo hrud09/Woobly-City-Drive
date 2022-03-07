@@ -11,11 +11,12 @@ public class AdmanagerHome : MonoBehaviour
     void Start()
     {
         interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
-        LoadInterstitialAd();
+       
     }
 
     public void ShowInterstitialAd()
     {
+        LoadInterstitialAd();
         if (this.interstitial.IsLoaded())
         {
             this.interstitial.Show();

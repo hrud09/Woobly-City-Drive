@@ -3572,20 +3572,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1828659936}
-        m_TargetAssemblyTypeName: CarShopManager, Assembly-CSharp
-        m_MethodName: BuyCar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AdManager, Assembly-CSharp
+      - m_Target: {fileID: 1772639397}
+        m_TargetAssemblyTypeName: AdmanagerHome, Assembly-CSharp
         m_MethodName: ShowInterstitialAd
         m_Mode: 1
         m_Arguments:
