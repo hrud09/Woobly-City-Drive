@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class SpawnPassenger : MonoBehaviour
 {
-    public Transform[] spawnPos;
+    public Transform[] passengerSpawnPos;
     public GameObject passenger;
     public int passengerCount;
     public List<Transform> selectedTransform;
     public GameObject destination;
+    public Transform taxi;
     // Start is called before the first frame update
     void Start()
     {
     
         while (selectedTransform.Count < 16)
         {
-            int i = Random.Range(0, spawnPos.Length);
-            if (!selectedTransform.Contains(spawnPos[i]))
+            int i = Random.Range(0, passengerSpawnPos.Length);
+            if (!selectedTransform.Contains(passengerSpawnPos[i]))
             {
-                selectedTransform.Add(spawnPos[i]);
+                selectedTransform.Add(passengerSpawnPos[i]);
             }
         }
         for (int i = 0; i < selectedTransform.Count; i++)
@@ -26,6 +27,7 @@ public class SpawnPassenger : MonoBehaviour
             passengerCount++;
             Instantiate(passenger, selectedTransform[i]);
         }
+      
     }
 
     public void FindNewPosAndInstantiate(Transform pickedPassenger)
@@ -34,22 +36,28 @@ public class SpawnPassenger : MonoBehaviour
 
         while (selectedTransform.Count < 16)
         {
-            int i = Random.Range(0, spawnPos.Length);
-            if (!selectedTransform.Contains(spawnPos[i]))
+            int i = Random.Range(0, passengerSpawnPos.Length);
+            if (!selectedTransform.Contains(passengerSpawnPos[i]))
             {
-                selectedTransform.Add(spawnPos[i]);
-                Instantiate(passenger, spawnPos[i]);
+                selectedTransform.Add(passengerSpawnPos[i]);
+                Instantiate(passenger, passengerSpawnPos[i]);
             }
         }
-      
+        taxi = GameObject.FindGameObjectWithTag("Car").transform;
         while (true)
         {
-            int i = Random.Range(0, spawnPos.Length);
-            if (!selectedTransform.Contains(spawnPos[i]))
+            int i = Random.Range(0, passengerSpawnPos.Length);
+            if (!selectedTransform.Contains(passengerSpawnPos[i]))
             {
-                Instantiate(destination, spawnPos[i]);
-                break;
+                if (Vector3.Distance(taxi.position, passengerSpawnPos[i].position) >= 20)
+                {
+                    Instantiate(destination, passengerSpawnPos[i]);
+                    break;
+                }
             }
+
+
+       
         }
     }
 }
