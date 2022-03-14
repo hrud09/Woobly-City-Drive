@@ -17,15 +17,16 @@ public class AdManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
-//#if UNITY_ANDROID
-  //      rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
-//#elif UNITY_IPHONE
+#if UNITY_ANDROID
+           rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
+           interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
+#elif UNITY_IPHONE
            rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
            interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
-//#endif
-      
-       
-        
+#endif
+
+
+
     }
 
     public void ShowRewardedAd()

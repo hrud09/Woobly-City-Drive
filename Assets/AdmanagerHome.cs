@@ -10,8 +10,14 @@ public class AdmanagerHome : MonoBehaviour
     public string interstitialAdId;
     void Start()
     {
-        interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
+      
+#if UNITY_ANDROID
        
+        interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
+#elif UNITY_IPHONE
+         
+           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
+#endif
     }
 
     public void ShowInterstitialAd()
