@@ -3572,9 +3572,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1772639397}
-        m_TargetAssemblyTypeName: AdmanagerHome, Assembly-CSharp
-        m_MethodName: ShowInterstitialAd
+      - m_Target: {fileID: 1828659936}
+        m_TargetAssemblyTypeName: CarShopManager, Assembly-CSharp
+        m_MethodName: BuyCar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
