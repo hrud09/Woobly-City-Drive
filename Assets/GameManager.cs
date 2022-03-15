@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
                 nextButton.SetActive(false);
                 gameOverPannel.SetActive(true);
                 rewardedAdButton.SetActive(true);
-           
+                FindObjectOfType<AudioListener>().enabled = false;
 
             }
             else
@@ -64,12 +64,14 @@ public class GameManager : MonoBehaviour
         minimap.SetActive(true);
         gameOverPannel.SetActive(false);
         ScoreManager.Instance.ingameCurrentScore = 0;
+        FindObjectOfType<AudioListener>().enabled = true;
     }
 
    
 
     public void GameWon()
     {
+        FindObjectOfType<AudioListener>().enabled = false;
         gameOver = true;
         minimap.SetActive(false);
         gameOverText.text = "Level Passed";
