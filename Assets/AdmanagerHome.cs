@@ -9,27 +9,26 @@ public class AdmanagerHome : MonoBehaviour
     void Start()
     {
       
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
        
         interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
-#elif UNITY_IPHONE
-         
-           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
-#endif
+        //#elif UNITY_IPHONE
+
+        //           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
+        //#endif
+
+
+        this.interstitial = new InterstitialAd(interstitialAdId);
+        LoadInterstitialAd();
     }
 
     public void ShowInterstitialAd()
-    {
-        LoadInterstitialAd();
-        if (this.interstitial.IsLoaded())
-        {
-            this.interstitial.Show();
-        }
+    { 
+       this.interstitial.Show();   
     }
     public void LoadInterstitialAd()
     {
 
-        this.interstitial = new InterstitialAd(interstitialAdId);
         this.interstitial.OnAdClosed += HandleOnAdClosed;
         this.interstitial.OnAdFailedToLoad += HandleOnAdFailedToLoad;
         AdRequest request = new AdRequest.Builder().Build();
@@ -37,10 +36,13 @@ public class AdmanagerHome : MonoBehaviour
     }
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        FindObjectOfType<CarShopManager>().SelectCar();
+        LoadInterstitialAd();
+        //  FindObjectOfType<CarShopManager>().SelectCar();
     }
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
+        LoadInterstitialAd();
         FindObjectOfType<CarShopManager>().SelectCar();
+       
     }
 }

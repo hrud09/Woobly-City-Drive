@@ -17,21 +17,22 @@ public class AdManager : MonoBehaviour
     void Start()
     {
         MobileAds.Initialize(initStatus => { });
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
            rewarderAdId = "ca-app-pub-3940256099942544/5224354917";
            interstitialAdId = "ca-app-pub-3940256099942544/1033173712";
-#elif UNITY_IPHONE
-           rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
-           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
-#endif
+        //#elif UNITY_IPHONE
+        //           rewarderAdId = "ca-app-pub-3940256099942544/1712485313";
+        //           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
+        //#endif
 
-
+        LoadRewardedAd();
+        LoadInterstitialAd();
 
     }
 
     public void ShowRewardedAd()
     {
-        LoadRewardedAd();
+       
         if (this.rewardedAd.IsLoaded()) {
             this.rewardedAd.Show();
         }
@@ -39,7 +40,6 @@ public class AdManager : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
-        LoadInterstitialAd();
         if (this.interstitial.IsLoaded()) {
             this.interstitial.Show();
         }
@@ -56,10 +56,14 @@ public class AdManager : MonoBehaviour
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
         GameManager.Instance.LoadMenu();
+
+        LoadInterstitialAd();
     }
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
         GameManager.Instance.LoadMenu();
+
+        LoadInterstitialAd();
     }
 
     public void LoadRewardedAd()
@@ -83,18 +87,19 @@ public class AdManager : MonoBehaviour
     {
         print(args.ToString());
         GameManager.Instance.gameOverPannel.SetActive(false);
-
+     
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         GameManager.Instance.RegeneratePlayer(30);
+        LoadRewardedAd();
 
-      
+
     }
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
       
         GameManager.Instance.RegeneratePlayer(30);
- 
+        LoadRewardedAd();
     }
 }
