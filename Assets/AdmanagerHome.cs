@@ -19,12 +19,13 @@ public class AdmanagerHome : MonoBehaviour
 
 
         this.interstitial = new InterstitialAd(interstitialAdId);
-        LoadInterstitialAd();
+       
     }
 
     public void ShowInterstitialAd()
-    { 
-       this.interstitial.Show();   
+    {
+        LoadInterstitialAd();
+        this.interstitial.Show();   
     }
     public void LoadInterstitialAd()
     {
@@ -36,12 +37,12 @@ public class AdmanagerHome : MonoBehaviour
     }
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        LoadInterstitialAd();
+       
         //  FindObjectOfType<CarShopManager>().SelectCar();
     }
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
-        LoadInterstitialAd();
+    
         FindObjectOfType<CarShopManager>().SelectCar();
        
     }

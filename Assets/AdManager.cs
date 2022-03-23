@@ -25,14 +25,14 @@ public class AdManager : MonoBehaviour
         //           interstitialAdId = "ca-app-pub-3940256099942544/4411468910";
         //#endif
 
-        LoadRewardedAd();
-        LoadInterstitialAd();
-
+    
+     
     }
 
     public void ShowRewardedAd()
     {
-       
+        LoadRewardedAd();
+
         if (this.rewardedAd.IsLoaded()) {
             this.rewardedAd.Show();
         }
@@ -40,6 +40,8 @@ public class AdManager : MonoBehaviour
 
     public void ShowInterstitialAd()
     {
+        LoadInterstitialAd();
+
         if (this.interstitial.IsLoaded()) {
             this.interstitial.Show();
         }
@@ -57,13 +59,12 @@ public class AdManager : MonoBehaviour
     {
         GameManager.Instance.LoadMenu();
 
-        LoadInterstitialAd();
+    
     }
     public void HandleOnAdClosed(object sender, EventArgs args)
     {
         GameManager.Instance.LoadMenu();
 
-        LoadInterstitialAd();
     }
 
     public void LoadRewardedAd()
@@ -85,14 +86,14 @@ public class AdManager : MonoBehaviour
     }
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
-        print(args.ToString());
+  
         GameManager.Instance.gameOverPannel.SetActive(false);
      
     }
     public void HandleUserEarnedReward(object sender, Reward args)
     {
         GameManager.Instance.RegeneratePlayer(30);
-        LoadRewardedAd();
+     
 
 
     }
@@ -100,6 +101,6 @@ public class AdManager : MonoBehaviour
     {
       
         GameManager.Instance.RegeneratePlayer(30);
-        LoadRewardedAd();
+  
     }
 }
