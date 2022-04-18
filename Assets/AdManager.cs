@@ -31,20 +31,12 @@ public class AdManager : MonoBehaviour
 
     public void ShowRewardedAd()
     {
-        LoadRewardedAd();
-
-        if (this.rewardedAd.IsLoaded()) {
-            this.rewardedAd.Show();
-        }
+        AdsManager.instance.ShowRewardedAd(()=> GameManager.Instance.RegeneratePlayer(30));
     }
 
     public void ShowInterstitialAd()
     {
-        LoadInterstitialAd();
-
-        if (this.interstitial.IsLoaded()) {
-            this.interstitial.Show();
-        }
+        AdsManager.instance.ShowInterstitial(GameManager.Instance.LoadMenu);
     }
     public void LoadInterstitialAd()
     {
@@ -57,7 +49,7 @@ public class AdManager : MonoBehaviour
     }
     public void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args)
     {
-        GameManager.Instance.LoadMenu();
+        
 
     
     }
@@ -100,7 +92,7 @@ public class AdManager : MonoBehaviour
     public void HandleRewardedAdClosed(object sender, EventArgs args)
     {
       
-        GameManager.Instance.RegeneratePlayer(30);
+        
   
     }
 }

@@ -46,6 +46,11 @@ public class CarShopManager : MonoBehaviour
     }
 
 
+    public void WatchAndStart()
+    {
+        AdsManager.instance.ShowInterstitial(FindObjectOfType<CarShopManager>().SelectCar);
+    }
+
 
     //Index
     int currentCarIndex;

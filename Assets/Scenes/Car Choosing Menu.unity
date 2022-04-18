@@ -1683,9 +1683,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1772639397}
-        m_TargetAssemblyTypeName: AdmanagerHome, Assembly-CSharp
-        m_MethodName: ShowInterstitialAd
+      - m_Target: {fileID: 1828659936}
+        m_TargetAssemblyTypeName: CarShopManager, Assembly-CSharp
+        m_MethodName: WatchAndStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2930,7 +2930,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c41b9556d15309d469fc47dd18d36021, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interstitialAdId: 
+  interstitialAndroid: ca-app-pub-3940256099942544/8691691433
+  interstitialIOS: 
+  rewardedAndroid: ca-app-pub-3940256099942544/5224354917
+  rewardedIOS: 
 --- !u!1 &1775521106
 GameObject:
   m_ObjectHideFlags: 0
