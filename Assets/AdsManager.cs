@@ -45,20 +45,6 @@ public class AdsManager : MonoBehaviour
     }
 
     #region Banner Ads          
-    public void RequestBanner(AdPosition adposition)
-    {
-        string bannerID;
-
-#if UNITY_ANDROID
-        bannerID = "";
-#elif UNITY_IOS
-                bannerID = adsConfig.BannerIdAdmobApple;
-#endif
-
-        banner = new BannerView(bannerID, AdSize.Banner, adposition);
-        AdRequest request = new AdRequest.Builder().Build();
-        banner.LoadAd(request);
-    }
 
     #endregion
 
