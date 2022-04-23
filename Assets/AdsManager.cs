@@ -51,7 +51,7 @@ public class AdsManager : MonoBehaviour
     #region Interstital Ads 
     public void RequestInterstitial()
     {
-        string interstitalID;
+        string interstitalID = "";
 
 #if UNITY_ANDROID
         interstitalID = interstitialAndroid;
@@ -119,7 +119,7 @@ public class AdsManager : MonoBehaviour
     void RequestRewardedAd()
     {
 
-        string rewardedID;
+        string rewardedID ="";
 
 #if UNITY_ANDROID
         rewardedID = rewardedAndroid;
